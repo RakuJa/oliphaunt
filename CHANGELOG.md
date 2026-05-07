@@ -7,6 +7,45 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.4.0](https://github.com/f0rr0/pglite-oxide/compare/0.3.0...0.4.0) - 2026-05-07
+
+> **Known broken release:** The crates.io packages for `0.4.0` were published
+> without the generated runtime/AOT payloads, causing default `bundled` builds
+> to fail at startup with missing embedded runtime assets. Use `0.4.1` or newer.
+
+### Breaking
+
+- Pivoted `pglite-oxide` to a new runtime architecture built around
+  reproducible Wasmer WASIX artifacts, generated asset manifests, and
+  target-specific AOT crates instead of checked-in runtime blobs
+  ([#13](https://github.com/f0rr0/pglite-oxide/pull/13)).
+- Release packages now rely on CI-generated portable WASIX and native AOT
+  artifacts for the exact release SHA. Applications should use the crate APIs
+  instead of depending on repository asset paths.
+
+### Added
+
+- Added extension catalog/build metadata, smoke/promoted extension manifests,
+  and generated APIs for discovering bundled PostgreSQL extensions.
+- Added `pg_dump` support and native AOT packages for the supported macOS,
+  Linux, and Windows target triples.
+
+### Changed
+
+- Reworked runtime startup, asset loading, protocol recovery, proxy behavior,
+  and test coverage around the new backend.
+
+### Fixed
+
+- Refreshed example lockfiles automatically after release-plz version bumps so
+  release PRs keep examples in sync with package versions.
+- Isolated downloaded AOT artifacts by target and preserved portable assets
+  after cache restore during asset/release jobs.
+- Kept release validation inside the generated staged workspace so package
+  checks run against the publishable crate contents.
+- Allowed release dry-runs to reuse the latest compatible Assets run when
+  package-only release commits do not change runtime inputs.
+
 ## [0.3.0](https://github.com/f0rr0/pglite-oxide/compare/0.2.0...0.3.0) - 2026-04-26
 
 ### Breaking
