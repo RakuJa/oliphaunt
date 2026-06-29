@@ -78,7 +78,7 @@ dunce = "1"
 filetime = "0.2"
 pglite-oxide-assets = { version = "=0.5.1", path = "crates/assets", optional = true }
 tokio = { version = "1", features = ["io-util", "rt-multi-thread"] }
-wasmer = { version = "=7.2.0-alpha.3", default-features = false, features = [
+wasmer = { version = "=7.2.0-rc.1", default-features = false, features = [
   "sys",
   "headless",
   "compiler",
