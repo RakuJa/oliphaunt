@@ -84,9 +84,9 @@ wasmer = { version = "=7.2.0-alpha.3", default-features = false, features = [
   "compiler",
   "wasmer-artifact-load",
 ] }
-wasmer-config = "=0.702.0-alpha.3"
-wasmer-types = "=7.2.0-alpha.3"
-wasmer-wasix = { version = "=0.702.0-alpha.3", default-features = false, features = [
+wasmer-config = "=0.702.0-rc.1"
+wasmer-types = "=7.2.0-rc.1"
+wasmer-wasix = { version = "=0.702.0-rc.1", default-features = false, features = [
   "sys-minimal",
   "sys-poll",
   "host-vnet",
